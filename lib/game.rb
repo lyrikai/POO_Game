@@ -70,7 +70,8 @@ class Game
     def enemies_attack 
 
         @enemies.each do |i|
-            if i.life_points <= 0 && @human_player.life_points > 0
+            if i.life_points <= 0 || @human_player.life_points < 0
+                
             else
                 puts i.attacks(@human_player)
             end

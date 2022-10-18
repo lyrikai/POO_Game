@@ -19,7 +19,7 @@ class Player
         @life_points = @life_points - dmg
         
         if @life_points <= 0
-            return "#{name} est mort"
+            return "xxxxxxxxxxxxxx #{name} est mort xxxxxxxxxxx"
         else
         end
     end
