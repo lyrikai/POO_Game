@@ -24,13 +24,13 @@ while player1.life_points >0 && (josiane.life_points > 0 || josé.life_points >0
     puts "s - chercher à se soigner" 
     puts ""
     puts "attaquer un joueur en vue :"
-    if josiane.life_points < 0 
+    if josiane.life_points <= 0 
         puts josiane.name + " est mort"
     else
         puts "0 - Josiane a #{josiane.life_points} points de vie"
     end
 
-    if josé.life_points < 0 
+    if josé.life_points <= 0 
         puts josé.name + " est mort"
     else
         puts "1 - José a #{josé.life_points} points de vie"

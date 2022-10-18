@@ -33,7 +33,7 @@ class Game_3
     end
 
     def menu 
-        puts ">>#{@human_player.name} Le tueur. Tu a #{@human_player.life_points}HP et une arme lvl #{@human_player.weapon_level}"
+        puts ">> #{@human_player.name} le tueur, tu a #{@human_player.life_points}HP et une arme lvl #{@human_player.weapon_level}"
         puts "il reste #{@players_left + @enemies_in_sight.length} ennemie a batres"
         puts "Quelle action veux-tu effectuer ?"
         puts ""
@@ -50,6 +50,7 @@ class Game_3
     end
 
     def menu_choice 
+        print ">>>  "
         choise = gets.chomp
         puts "
                  ________________
@@ -59,8 +60,10 @@ class Game_3
             puts @human_player.search_weapon
         elsif choise == "s"
             puts @human_player.search_health_pack    
-        else
+        elsif choise.to_i >= 1 && choise.to_i <= 5
             puts @human_player.attacks(@enemies_in_sight[choise.to_i - 1])
+        else
+            puts  "#{@human_player.name} ne fait rien"
         end
 
         kill_player
@@ -79,7 +82,9 @@ class Game_3
                 puts i.attacks(@human_player)
             end
         end
-       
+        puts "                 ________________
+        O|===|* >________________>"
+       gets.chomp
     end 
 
     def ending 
@@ -106,7 +111,7 @@ class Game_3
                 @enemies_in_sight << Player.new("ennemie #{rand(1..1000)}")
                 puts "+ 2 ennemie dans la pool"
             elsif roll == 1
-                puts "pas de nouvelle ennemis "
+                puts "Tu a de la chance, pas de nouvelle ennemis dans la pool"
             else
                 @players_left = @players_left - 1
                 @enemies_in_sight << Player.new("ennemie #{rand(1..1000)}")
@@ -117,6 +122,7 @@ class Game_3
     end
 
     def play
+      
         while @human_player.life_points > 0 &&  (@players_left > 0 || @enemies_in_sight.length > 0 )
             new_players_in_sight
             menu 
